@@ -30,16 +30,13 @@ app.configure('development', function(){
 // app.get('/users', user.list);
 
 var TaskList = require('./routes/tasklist');
-var taskList = new TaskList('mongodb://admin:password@ds045137.mongolab.com:45137/tasklist');
-
+//var taskList = new TaskList('mongodb://admin:password@ds045137.mongolab.com:45137/tasklist');
+var taskList = new TaskList('mongodb://admin:password@ds043987.mongolab.com:43987/af_node-tasklist-bkahl1984');
 
 app.get('/', taskList.showTasks.bind(taskList));
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
-
-app.listen(process.env.port || 7000);
-
-// http.createServer(app).listen(app.get('port'), function(){
-//   console.log("Express server listening on port " + app.get('port'));
-// });
+http.createServer(app).listen(app.get(process.env.VMC_APP_PORT || 1337, null), function(){
+  console.log("Express server listening on port " + app.get(process.env.VMC_APP_PORT || 1337, null));
+});
