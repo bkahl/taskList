@@ -24,8 +24,8 @@ TaskList.prototype = {
       if(err) {
         throw err;
       }
+      res.redirect('/');
     });
-    res.redirect('/');
   },
 
   completeTask: function(req,res) {
@@ -38,9 +38,9 @@ TaskList.prototype = {
           if(err) {
             throw err;
           }
+          res.redirect('/');
         });
       }
     }
-    res.redirect('/');
   }
 }
